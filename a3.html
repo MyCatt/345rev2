@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Assignment 3 Base code Adapted from W3.CSS Template</title>
+<!--stick figure contact images were created by Tatyana, RU on the noun project -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="styles.css">
+
+<body>
+
+<!-- Side Navigation -->
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card" style="z-index:3;width:320px;" id="mySidebar">
+  <a href="javascript:void(0)" onclick="openHome()" class="w3-bar-item w3-button w3-border-bottom w3-large logo_head"><img id="logo" src="logo2x.png"><br/>
+  Based on<span><img src="https://www.w3schools.com/images/w3schools.png" style="width:30%; margin: 0 2.5px;"></span> template</a>
+  <a href="javascript:void(0)" onclick="w3_close()" title="Close Sidemenu" 
+  class="w3-bar-item w3-button w3-hide-large w3-large">Close <i class="fa fa-remove"></i></a>
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" onclick="document.getElementById('id01').style.display='block'">Share File <i class="w3-padding fa fa-pencil"></i></a>
+  <a id="myBtn" class="w3-bar-item w3-button"><i class="fa fa-inbox w3-margin-right"></i>Files (3)<i class="fa fa-caret-down w3-margin-left"></i></a>
+  <div id="Demo1" class="w3-hide w3-animate-left">
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" onclick="function()('File1');w3_close();" id="firstTab">
+      <div class="w3-container">
+        <img class="w3-round w3-margin-right" src="./fileIcon3.png" style="width:15%;"><span class="w3-opacity w3-large">File 1</span>
+        <h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</h6>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      </div>
+    </a>
+     <a href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" onclick="doShare('File2');w3_close();">
+      <div class="w3-container">
+        <img class="w3-round w3-margin-right" src="./fileIcon5.png" style="width:15%;"><span class="w3-opacity w3-large">File 2</span>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      </div>
+    </a>
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom test w3-hover-light-grey" onclick="doShare('File3');w3_close();">
+      <div class="w3-container">
+        <img class="w3-round w3-margin-right" src="./fileIcon2.png" style="width:15%;"><span class="w3-opacity w3-large">File 3</span>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      </div>
+    </a>
+  </div>
+  <a href="#" class="w3-bar-item w3-button" onclick="openHome()"><i class="fa fa-cloud"></i> &nbsp;Cloud Share</a>
+  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-margin-right"></i>Shared Files</a>
+  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-hourglass-end w3-margin-right"></i>Draft Files</a>
+  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-trash w3-margin-right"></i>Trash</a>
+</nav>
+
+<!-- Modal that pops up when you click on "Share File" -->
+<div id="id01" class="w3-modal" style="z-index:4">
+  <div class="w3-modal-content w3-animate-zoom">
+    <div class="w3-container w3-padding w3-purple">
+       <span onclick="document.getElementById('id01').style.display='none'"
+       class="w3-button w3-purple w3-right w3-xxlarge"><i class="fa fa-remove"></i></span>
+      <h2>Share File</h2>
+    </div>
+    <div class="w3-panel">
+      <label class="contact_card_label">To</label>
+      <input class="w3-input w3-border w3-margin-bottom" type="text">
+      <label class="contact_card_label">From</label>
+      <input class="w3-input w3-border w3-margin-bottom" type="text">
+      <label class="contact_card_label">File</label>
+      <input class="w3-input w3-border w3-margin-bottom" type="text">
+      <input class="w3-input w3-border w3-margin-bottom" style="height:150px" placeholder="Message">
+      <div class="w3-section">
+        <a class="w3-button w3-red" onclick="document.getElementById('id01').style.display='none'">Cancel  <i class="fa fa-remove"></i></a>
+        <a class="w3-button w3-light-grey w3-right" onclick="document.getElementById('id01').style.display='none';document.getElementById('shareVerification').style.display='block'">Share  <i class="fa fa-paper-plane"></i></a> 
+      </div>    
+    </div>
+  </div>
+</div>
+
+<!-- Window that pops up after doc is shared -->
+<div id="shareVerification" class="w3-modal" style="z-index:4">
+	<div class="w3-modal-content w3-animate-zoom">
+		 <div class="w3-panel">
+			<br/> <br/>
+			<h1 style="text-align:center"> Your file has been shared! </h1>
+			
+			<p style="text-align:center"><img src="./noun_Check_1271976.png" style="width:15%;"></p>
+			<div class="w3-section">
+			<p style="text-align:center">
+			<a class="w3-button w3-green" onclick="document.getElementById('shareVerification').style.display='none'">Continue </a>
+			</p>
+			</div>
+		 </div>
+	</div>
+</div>
+
+<!-- Overlay effect when opening the side navigation on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="Close Sidemenu" id="myOverlay"></div>
+
+<!-- delete confirmation page -->
+<div id="deleteConfirm" class="w3-modal" style="z-index:4">
+	<div class="w3-modal-content w3-animate-zoom">
+		<div class="w3-container w3-padding w3-red">
+			<span onclick="document.getElementById('deleteConfirm').style.display='none'"
+			class="w3-button w3-red w3-right w3-xxlarge"><i class="fa fa-remove"></i></span>
+			<h2>Are you sure you would like to delete this file?</h2>
+		</div>
+		 <div class="w3-panel">
+			<div class="w3-section">
+				<a class="w3-button w3-light-grey" onclick="document.getElementById('deleteConfirm').style.display='none'">No </a>
+				<a class="w3-button w3-red w3-right" onclick="document.getElementById('deleteConfirm').style.display='none'">Yes </a> 
+			</div> 
+		 </div>
+	</div>
+</div>
+
+<!-- Page content -->
+<div class="w3-main" style="margin-left:320px;">
+<i class="fa fa-bars w3-button w3-white w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
+<a href="javascript:void(0)" class="w3-hide-large w3-red w3-button w3-right w3-margin-top w3-margin-right" onclick="document.getElementById('id01').style.display='block'"><i class="fa fa-pencil"></i></a>
+
+<!--Document preview page-->
+<div id="previewPage" class="w3-modal" style="z-index:4">
+	<div class="w3-modal-content w3-animate-zoom">
+		<div class="w3-container w3-padding w3-blue">
+			<span onclick="document.getElementById('previewPage').style.display='none'"
+			class="w3-button w3-blue w3-right w3-xxlarge"><i class="fa fa-remove"></i></span>
+			<h2>Document Preview</h2>
+		</div>
+		 <div class="w3-panel">
+			<br>
+			<img class="w3-round  w3-animate-top" src="./fileIcon3.png" style="width:20%;">
+			<h5 class="w3-opacity">File 1</h5>
+			<h4><i class="fa fa-clock-o"></i> File 1, Sep 27, 2015.</h4>
+			<hr>
+  
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+ 
+		 </div>
+	</div>
+</div>
+
+<!--help popup for permissions -->
+<div id="popup1" class="w3-modal" style="z-index:4">
+	<div class="w3-modal-content w3-animate-zoom">
+		<div class="w3-container w3-padding w3-green">
+			<span onclick="document.getElementById('popup1').style.display='none';document.getElementById('permissionsPage').style.display='block'"
+			class="w3-button w3-green w3-right w3-xxlarge"><i class="fa fa-remove"></i></span>
+		</div>
+		<div class="w3-panel">
+			<h3> Public and private documents </h3>
+			<p> A private document can only be seen by the creator and those who are given access via sharing. A public document is viewable by all users through its url. Editing for users is granted via sharing for both private and public documents. </p>
+		</div>
+	</div>
+</div>
+
+<!--permissionsPage -->
+<div id="permissionsPage" class="w3-modal" style="z-index:4">
+	<div class="w3-modal-content w3-animate-zoom">
+		<div class="w3-container w3-padding w3-green">
+			<span onclick="document.getElementById('permissionsPage').style.display='none'"
+			class="w3-button w3-green w3-right w3-xxlarge"><i class="fa fa-remove"></i></span>
+			<h2>Permissions</h2>
+		</div>
+		 <div class="w3-panel">
+			<br>
+			<h3 style="text-align:center">File 1</h3>
+			<h4 style="text-align:center"> Document Permissions <i class="fa fa-pencil-square-o"></i></h4>
+			<p> This document is <select>
+				<option value="public">Public</option>
+				<option value="private" selected>Private</option>
+			</select>
+			<i class="w3-round w3-button fa fa-info-circle" onclick="document.getElementById('popup1').style.display='block';document.getElementById('permissionsPage').style.display='none'"></i>
+			</p>
+			
+			<h4 style="text-align:center"> User Permissions <i class="fa fa-group"></i></h4>
+			<table style="width:100%">
+				<tr>
+					<th style="text-align:left" >User</th>
+					<th style="text-align:left" >Email</th>
+					<th style="text-align:left" >Editing Permissions</th>
+					<th style="text-align:left" >Sharing Permissions</th>
+				</tr>
+				<tr>
+					<td>John Smith</td>
+					<td>sampleEmail@gmail.com</td>
+					<td><select>
+						<option value="read" selected>Read Only</option>
+						<option value="write">Read and Write</option>
+						</select>
+					</td>
+					<td><select>
+						<option value="noSharing" selected>Can not share</option>
+						<option value="share">Can share</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+			<div class="w3-section">
+			<p style="text-align:right">
+				<a class="w3-button w3-red" onclick="document.getElementById('permissionsPage').style.display='none'">Cancel <i class="fa fa-remove"></i> </a> 
+				<a class="w3-button w3-green" onclick="document.getElementById('permissionsPage').style.display='none'">Save <i class="fa fa-check-circle"></i> </a> 
+			</p>
+			</div>
+		 </div>
+	</div>
+</div>
+
+<!--forum -->
+<div id="forumPage" class="w3-modal" style="z-index:4">
+	<div class="w3-modal-content w3-animate-zoom">
+		<div class="w3-container w3-padding w3-yellow">
+			<span onclick="document.getElementById('forumPage').style.display='none'"
+			class="w3-button w3-yellow w3-right w3-xxlarge"><i class="fa fa-remove"></i></span>
+			<h2>Forum</h2>
+		</div>
+		 <div id="forumMessages" class="w3-panel">
+			
+			<div class="w3-container w3-light-grey">
+			<h6>John Smith</h6>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+			</div>
+			<div class="w3-container w3-pale-yellow">
+			<h6>You</h6>
+			<p> Ut enim ad minim veniam, quis nostrud exercitation...</p>
+			</div>
+			<div class="w3-container w3-pale-blue">
+			<h6>Mary Smith</h6>
+			<p> sed do eiusmod tempor incididunt ut labore...</p>
+			</div>
+		 </div>
+		 <div class="w3-panel">
+			<p style="text-align:right">
+				<input id="forumInput" class="w3-input w3-border w3-margin-bottom" type="text">
+				<a class="w3-button w3-yellow" onclick="postToForum()">Send	<i class="fa fa-arrow-right"></i> </a> 
+			</p>
+		</div>
+	</div>
+</div>
+
+<!--Contact page -->
+<div id="contactPage" class="w3-modal" style="z-index:4">
+	<div class="w3-modal-content w3-animate-zoom">
+		<div class="w3-container w3-padding contact_header">
+			<span onclick="document.getElementById('contactPage').style.display='none'"
+			class="w3-button w3-right w3-xlarge"><i class="fa fa-remove exit_btn"></i></span>
+			<h2 id="contact_title">Contact</h2>
+		</div>
+		 <div class="w3-panel">
+			<p class="contact_card_label">Name: </p>
+			<p class="contact_card_value"> John Smith </p>
+			<p class="contact_card_label"> Email: </p>
+			<p class="contact_card_value"> sample@gmail.com </p>
+			
+		 </div>
+	</div>
+</div>
+
+<div id="HomePage" >
+	<h1 id="cloud_share_title" class="w3-xxlarge w3-blue w3-animate-top"><i class="fa fa-cloud"></i> &nbsp; Cloud Share </h1>
+	<div>
+	<h3 style="text-align:left;" class="w3-animate-left cloud_header_title">   Contacts </h3>
+	<div class="contactMenu w3-animate-left">
+	<!--stick figure contact images were created by Tatyana, RU on the noun project -->
+	<img src="./noun_stick figure_2670964.png" class="contactPortrait w3-light-grey w3-button" onclick="document.getElementById('contactPage').style.display='block'">
+	<img src="./noun_stick figure_3022117.png" class="contactPortrait w3-light-grey w3-button" onclick="document.getElementById('contactPage').style.display='block'">
+	<img src="./noun_stick figure_3022115.png" class="contactPortrait w3-light-grey w3-button" onclick="document.getElementById('contactPage').style.display='block'">
+	<img src="./noun_stick figure_2674533.png" class="contactPortrait w3-light-grey w3-button" onclick="document.getElementById('contactPage').style.display='block'">
+	<img src="./noun_stick figure_2670956.png" class="contactPortrait w3-light-grey w3-button" onclick="document.getElementById('contactPage').style.display='block'">
+	<img src="./noun_stick figure_2674553.png" class="contactPortrait w3-light-grey w3-button" onclick="document.getElementById('contactPage').style.display='block'">
+	<img src="./noun_stick figure_3022115.png" class="contactPortrait w3-light-grey w3-button" onclick="document.getElementById('contactPage').style.display='block'">
+	<img src="./noun_stick figure_2670956.png" class="contactPortrait w3-light-grey w3-button" onclick="document.getElementById('contactPage').style.display='block'">
+	</div>
+	</div>
+	<h3 style="text-align:left;" class="w3-animate-left cloud_header_title">Documents </h3>
+	<div id="file_filter">
+		<input id="filter_search_input" type="text" placeholder="File search">
+		<select>
+			<option>Creation Date</option>
+			<option>Size</option>
+		</select>
+	</div>
+
+	<table id="doc_browse" style="width:100%">
+	
+		<tr id="">
+			<th style="width: 200px;" >Name</th>
+			<th >Size</th>
+			<th >Created</th>
+			<th >Last Edit</th>
+			<th style="max-width: 200px; overflow-x: auto;" >Shared with </th>
+			<th> Options</th>
+		</tr>
+		<!--table entries -->
+		<tr>
+			<td><img class="w3-round doc_browse_icons" onclick="doShare('File1')" src="./fileIcon3.png"><span class="icon_title">File 1</span></td>
+			<td>32kb</td>
+			<td>1/1/2020</td>
+			<td>2/2/2020</td>
+			<td><p class="email_contacts"><span>sampleEmail@gmail.com</span> <span>email2@gmail.com</span></p>
+			</td>
+			<td> <a class="w3-button w3-blue" onclick="document.getElementById('previewPage').style.display='block'">Preview <i class="fa fa-sticky-note"></i> </a> 
+			<a class="w3-button w3-green" onclick="document.getElementById('permissionsPage').style.display='block'">Permissions <i class="fa fa-lock"></i> </a> 
+			<a class="w3-button w3-red" onclick="document.getElementById('deleteConfirm').style.display='block'">Delete <i class="fa fa-trash"></i> </a>
+			<a class="w3-button w3-yellow" onclick="document.getElementById('forumPage').style.display='block'">Forum <i class="fa fa-pencil"></i> </a>
+			<a class="w3-button w3-purple" onclick="document.getElementById('id01').style.display='block'">Share <i class="fa fa-paper-plane"></i> </a>
+			</td>
+		</tr>
+		<tr>
+			<td><img class="w3-round doc_browse_icons" onclick="doShare('File2')" src="./fileIcon2.png"><span class="icon_title">File 2</span></td>
+			<td>142kb</td>
+			<td>1/1/2020</td>
+			<td>2/2/2020</td>
+			<td><p class="email_contacts"><span>sampleEmail@gmail.com</span></p></td>
+			<td> <a class="w3-button w3-blue" onclick="document.getElementById('previewPage').style.display='block'">Preview <i class="fa fa-sticky-note"></i> </a> 
+			<a class="w3-button w3-green" onclick="document.getElementById('permissionsPage').style.display='block'">Permissions <i class="fa fa-lock"></i> </a> 
+			<a class="w3-button w3-red" onclick="document.getElementById('deleteConfirm').style.display='block'">Delete <i class="fa fa-trash"></i> </a>
+			<a class="w3-button w3-yellow" onclick="document.getElementById('forumPage').style.display='block'">Forum <i class="fa fa-pencil"></i> </a>
+			<a class="w3-button w3-purple" onclick="document.getElementById('id01').style.display='block'">Share <i class="fa fa-paper-plane"></i> </a>
+			</td>
+		</tr>
+		<tr>
+			<td><img class="w3-round doc_browse_icons" onclick="doShare('File3')" src="./fileIcon5.png"><span class="icon_title">File 3</span></td>
+			<td>239kb</td>
+			<td>1/1/2020</td>
+			<td>2/2/2020</td>
+			<td><p class="email_contacts"><span>sampleEmail@gmail.com</span></p></td>
+			<td> <a class="w3-button w3-blue" onclick="document.getElementById('previewPage').style.display='block'">Preview <i class="fa fa-sticky-note"></i> </a> 
+			<a class="w3-button w3-green" onclick="document.getElementById('permissionsPage').style.display='block'">Permissions <i class="fa fa-lock"></i> </a> 
+			<a class="w3-button w3-red" onclick="document.getElementById('deleteConfirm').style.display='block'">Delete <i class="fa fa-trash"></i> </a>
+			<a class="w3-button w3-yellow" onclick="document.getElementById('forumPage').style.display='block'">Forum <i class="fa fa-pencil"></i> </a>
+			<a class="w3-button w3-purple" onclick="document.getElementById('id01').style.display='block'">Share <i class="fa fa-paper-plane"></i> </a>
+			</td>
+		</tr>
+		
+		
+		
+	</table>
+</div>
+
+
+<div id="File1" class="w3-container file">
+  <br>
+  <img class="w3-round  w3-animate-top" src="./fileIcon3.png" style="width:20%;">
+  <h5 class="w3-opacity">File 1</h5>
+  <h4><i class="fa fa-clock-o"></i> File 1, Sep 27, 2015.</h4>
+  <a class="w3-button w3-light-grey" href="#" onclick="document.getElementById('id01').style.display='block'">Share<i class="w3-margin-left fa fa-mail-reply"></i></a>
+  <a class="w3-button w3-light-grey" href="#">Delete<i class="w3-margin-left fa fa-arrow-right"></i></a>
+  <hr>
+  
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+ 
+</div>
+
+<div id="File2" class="w3-container file">
+  <br>
+  <img class="w3-round w3-animate-top" src="./fileIcon5.png" style="width:20%;">
+  <h5 class="w3-opacity">File 2</h5>
+  <h4><i class="fa fa-clock-o"></i> File 2, Sep 25, 2015.</h4>
+  <a class="w3-button w3-light-grey" onclick="document.getElementById('id01').style.display='block'">Share<i class="w3-margin-left fa fa-mail-reply"></i></a>
+  <a class="w3-button w3-light-grey">Delete<i class="w3-margin-left fa fa-arrow-right"></i></a>
+  <hr>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+</div>
+
+<div id="File3" class="w3-container file">
+  <br>
+  <img class="w3-round w3-animate-top" src="./fileIcon2.png" style="width:20%;">
+  <h5 class="w3-opacity">File 3</h5>
+  <h4><i class="fa fa-clock-o"></i> File 3, Sep 23, 2015.</h4>
+  <a class="w3-button w3-light-grey" onclick="document.getElementById('id01').style.display='block'">Share<i class="w3-margin-left fa fa-mail-reply"></i></a>
+  <a class="w3-button w3-light-grey">Delete<i class="w3-margin-left fa fa-arrow-right"></i></a>
+  <hr>
+ 
+</div>
+     
+</div>
+
+<!-- Home page --> 
+<script>
+var openInbox = document.getElementById("myBtn");
+openInbox.click();
+
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+function myFunc(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show"; 
+    x.previousElementSibling.className += " w3-red";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+    x.previousElementSibling.className = 
+    x.previousElementSibling.className.replace(" w3-red", "");
+  }
+}
+
+document.getElementById("myBtn").addEventListener('click', () => {
+	myFunc('Demo1')
+})
+
+
+function openHome(){
+	var i;
+	var x = document.getElementsByClassName("file");
+	for (i = 0; i < x.length; i++) {
+		x[i].style.display = "none";
+	}
+	x = document.getElementById("HomePage");
+	x.style.display = "block";
+}
+
+function postToForum(){
+	var x = document.getElementById("forumMessages");
+	var s = "<div class='w3-container w3-pale-yellow'><h6>You</h6><p>";
+	x.innerHTML += s.concat(document.getElementById("forumInput").value,"</p></div>");
+	
+}
+
+
+function doShare(fileName) {
+  var i;
+  var x = document.getElementsByClassName("file");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  x = document.getElementById("HomePage");
+  x.style.display = "none";
+  
+  x = document.getElementsByClassName("test");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" w3-light-grey", "");
+  }
+  document.getElementById(fileName).style.display = "block";
+  event.currentTarget.className += " w3-light-grey";
+}
+openHome();
+
+const fileTable = document.getElementById("doc_browse")
+const searchFileTable = param => {
+        const trChildren = fileTable.getElementsByTagName("tr");
+        for (let i = 0; i < trChildren.length; i++) {
+            const tdChildren = trChildren[i].getElementsByTagName("td")[0];
+            if (tdChildren) {
+            const tdValue = tdChildren.textContent || tdChildren.innerText;
+            if (tdValue.toUpperCase().indexOf(param.toUpperCase()) > -1) {
+                trChildren[i].style.display = "";
+            } else {
+                trChildren[i].style.display = "none";
+            }
+            }
+    }
+}
+
+document.getElementById("filter_search_input").addEventListener('keyup', () => {
+	searchFileTable(document.getElementById("filter_search_input").value)
+})
+
+</script>
+
+<script>
+var openTab = document.getElementById("firstTab");
+openTab.click();
+</script>
+
+</body>
+</html> 
+
+
