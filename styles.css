@@ -11,9 +11,11 @@ div.contactMenu {overflow: auto;white-space: nowrap;}
 .contact_card_value {margin: 0 0 20px;}
 
 #cloud_share_title {
+    display: none;
     margin: 0;
     text-align: center;
-    padding: 10px 0;
+    padding: 0;
+    font-size: 20px !important;
 }
 
 .cloud_header_title {
@@ -44,8 +46,17 @@ div.contactMenu {overflow: auto;white-space: nowrap;}
     padding: 0 20px;
 }
 
+#doc_browse  td a {
+    border-radius: 5px;
+}
+
 #doc_browse tr:nth-child(odd) {
     background-color: #f3f3f3;
+}
+
+#doc_browse tr:hover {
+    cursor: pointer;
+    background-color: #d6d6d6;
 }
 
 .doc_browse_icons {
