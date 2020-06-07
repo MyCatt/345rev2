@@ -55,16 +55,22 @@
       <h2>Share File</h2>
     </div>
     <div class="w3-panel">
-      <label class="contact_card_label">To</label>
+	  <label class="contact_card_label">Copy URL</label>
+	  <div id="copy_url_wrap">
+		<input class="w3-input w3-border w3-margin-bottom" type="text" value="www.studydrive.io/fH03LxZm$">
+		<select>
+			<option>View/Edit</option>
+			<option>Edit</option>
+			<option>View</option>
+		</select>
+	  </div>
+      <label class="contact_card_label">Type a name or email</label>
       <input class="w3-input w3-border w3-margin-bottom" type="text">
-      <label class="contact_card_label">From</label>
+      <label class="contact_card_label">Course Label</label>
       <input class="w3-input w3-border w3-margin-bottom" type="text">
-      <label class="contact_card_label">File</label>
-      <input class="w3-input w3-border w3-margin-bottom" type="text">
-      <input class="w3-input w3-border w3-margin-bottom" style="height:150px" placeholder="Message">
       <div class="w3-section">
         <a class="w3-button w3-red" onclick="document.getElementById('id01').style.display='none'">Cancel  <i class="fa fa-remove"></i></a>
-        <a class="w3-button w3-light-grey w3-right" onclick="document.getElementById('id01').style.display='none';document.getElementById('shareVerification').style.display='block'">Share  <i class="fa fa-paper-plane"></i></a> 
+        <a class="w3-button w3-light-grey w3-right" onclick="document.getElementById('id01').style.display='none';document.getElementById('shareVerification').style.display='block'">Save  <i class="fa fa-paper-plane"></i></a> 
       </div>    
     </div>
   </div>
@@ -472,7 +478,6 @@ const searchFileTable = param => {
 }
 
 const searchcontact = param => {
-	console.log(param)
 	const results = document.getElementsByClassName("contact_result")
 	for (let i = 0; i < results.length; i++) {
         const tdChildren = results[i].getElementsByTagName("h5")[0];
