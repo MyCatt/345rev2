@@ -209,16 +209,16 @@
 		</div>
 		 <div id="forumMessages" class="w3-panel">
 			
-			<div class="w3-container w3-light-grey">
-			<h6>John Smith</h6>
+			<div class="w3-container forum_post">
+			<h6>John Smith &middot; Yesterday</h6>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
 			</div>
-			<div class="w3-container w3-pale-yellow">
-			<h6>You</h6>
+			<div class="w3-container forum_post">
+			<h6>You &middot; 1 hour ago</h6>
 			<p> Ut enim ad minim veniam, quis nostrud exercitation...</p>
 			</div>
-			<div class="w3-container w3-pale-blue">
-			<h6>Mary Smith</h6>
+			<div class="w3-container forum_post">
+			<h6>Mary Smith &middot; 2 min ago</h6>
 			<p> sed do eiusmod tempor incididunt ut labore...</p>
 			</div>
 		 </div>
@@ -244,8 +244,18 @@
 			<p class="contact_card_value"> John Smith </p>
 			<p class="contact_card_label"> Email: </p>
 			<p class="contact_card_value"> sample@gmail.com </p>
-			
+			<p class="contact_card_label"> Active Courses: </p>
+			<p class="contact_card_value"> CompSci 345, InfoSys 322 </p>
 		 </div>
+	</div>
+</div>
+
+<div id="contactSearchResults">
+	<div id="contact_search_head">
+		<p>Contact List</p>
+	</div>
+	<div id="contact_results">
+
 	</div>
 </div>
 
@@ -253,6 +263,10 @@
 	<h1 id="cloud_share_title" class="w3-xxlarge w3-blue w3-animate-top"><i class="fa fa-cloud"></i> &nbsp; Cloud Share </h1>
 	<div>
 	<h3 style="text-align:left;" class="w3-animate-left cloud_header_title">   Contacts </h3>
+	<div id="search_contain">
+		<input id="contact_search_input" type="text" placeholder="Contacts search">
+	</div>
+
 	<div class="contactMenu w3-animate-left">
 	<!--stick figure contact images were created by Tatyana, RU on the noun project -->
 	<img src="./noun_stick figure_2670964.png" class="contactPortrait w3-light-grey w3-button" onclick="document.getElementById('contactPage').style.display='block'">
@@ -282,6 +296,7 @@
 			<th >Created</th>
 			<th >Last Edit</th>
 			<th style="max-width: 200px; overflow-x: auto;" >Shared with </th>
+			<th>Course</th>
 			<th> Options</th>
 		</tr>
 		<!--table entries -->
@@ -290,8 +305,8 @@
 			<td>32kb</td>
 			<td>1/1/2020</td>
 			<td>2/2/2020</td>
-			<td><p class="email_contacts"><span>sampleEmail@gmail.com</span> <span>email2@gmail.com</span></p>
-			</td>
+			<td><p class="email_contacts"><span>sampleEmail@gmail.com</span> <span>email2@gmail.com</span></p></td>
+			<td>InfoSys322</td>
 			<td> <a class="w3-button w3-blue" onclick="document.getElementById('previewPage').style.display='block'">Preview <i class="fa fa-sticky-note"></i> </a> 
 			<a class="w3-button w3-green" onclick="document.getElementById('permissionsPage').style.display='block'">Permissions <i class="fa fa-lock"></i> </a> 
 			<a class="w3-button w3-red" onclick="document.getElementById('deleteConfirm').style.display='block'">Delete <i class="fa fa-trash"></i> </a>
@@ -305,6 +320,7 @@
 			<td>1/1/2020</td>
 			<td>2/2/2020</td>
 			<td><p class="email_contacts"><span>sampleEmail@gmail.com</span></p></td>
+			<td>CompSci345</td>
 			<td> <a class="w3-button w3-blue" onclick="document.getElementById('previewPage').style.display='block'">Preview <i class="fa fa-sticky-note"></i> </a> 
 			<a class="w3-button w3-green" onclick="document.getElementById('permissionsPage').style.display='block'">Permissions <i class="fa fa-lock"></i> </a> 
 			<a class="w3-button w3-red" onclick="document.getElementById('deleteConfirm').style.display='block'">Delete <i class="fa fa-trash"></i> </a>
@@ -318,6 +334,7 @@
 			<td>1/1/2020</td>
 			<td>2/2/2020</td>
 			<td><p class="email_contacts"><span>sampleEmail@gmail.com</span></p></td>
+			<td>CompSci210</td>
 			<td> <a class="w3-button w3-blue" onclick="document.getElementById('previewPage').style.display='block'">Preview <i class="fa fa-sticky-note"></i> </a> 
 			<a class="w3-button w3-green" onclick="document.getElementById('permissionsPage').style.display='block'">Permissions <i class="fa fa-lock"></i> </a> 
 			<a class="w3-button w3-red" onclick="document.getElementById('deleteConfirm').style.display='block'">Delete <i class="fa fa-trash"></i> </a>
@@ -414,7 +431,7 @@ function openHome(){
 
 function postToForum(){
 	var x = document.getElementById("forumMessages");
-	var s = "<div class='w3-container w3-pale-yellow'><h6>You</h6><p>";
+	var s = "<div class='w3-container forum_post'><h6>You &middot; Just Now</h6><p>";
 	x.innerHTML += s.concat(document.getElementById("forumInput").value,"</p></div>");
 	
 }
@@ -454,10 +471,73 @@ const searchFileTable = param => {
     }
 }
 
+const searchcontact = param => {
+	console.log(param)
+	const results = document.getElementsByClassName("contact_result")
+	for (let i = 0; i < results.length; i++) {
+        const tdChildren = results[i].getElementsByTagName("h5")[0];
+        if (tdChildren) {
+            const tdValue = tdChildren.textContent || tdChildren.innerText;
+        	if (tdValue.toUpperCase().indexOf(param.toUpperCase()) > -1) {
+                results[i].style.display = "";
+            } else {
+                results[i].style.display = "none";
+            }
+        }
+    }
+}
+
 document.getElementById("filter_search_input").addEventListener('keyup', () => {
 	searchFileTable(document.getElementById("filter_search_input").value)
 })
 
+document.getElementById("contact_search_input").addEventListener('focus', () => {
+	document.getElementById("contactSearchResults").style.display = "inline-block"
+})
+
+document.getElementById("contact_search_input").addEventListener('keyup', e => {
+	searchcontact(e.target.value)
+})
+
+document.getElementById("contact_search_input").addEventListener('blur', () => {
+	document.getElementById("contactSearchResults").style.display = "none"
+})
+
+const mockData = {
+    names: [
+        "Abril", "Abbiegayle", "Abilard", "Abad", "Andrew",
+        "Ben", "Bail", "Batya", "Beau", "Brian", "Bran",
+        "Cadwell", "Caleb", "Cole", "Cadmus", "Calix", "Cafall",
+        "Daily", "Dack", "Dabi", "Dalain", "Dahl", "Dalila",
+        "Jack", "Jadee", "Jadin", "Jadera", "Jocheim", "Joenes",
+        "Raffer", "Raff", "Radcliffe", "Radd", "Rania", "Rai",
+        "Tann", "Taras", "Tallie", "Takara", "Taina", "Tallulah"
+    ]
+}
+
+const fillContacts = (course, count) => {
+	const courseName = document.createElement('div')
+	courseName.className = "contact_class_head"
+	courseName.innerText = course
+	document.getElementById("contact_results").appendChild(courseName)
+	for(let i = 0; i < count; i++) {
+		const random_f = Math.floor(Math.random() * 40)
+		const random_l = Math.floor(Math.random() * 40)
+		const row = document.createElement('div')
+		row.className = "contact_result"
+		const thumb = document.createElement('img')
+		thumb.className = "contactPortrait w3-light-grey w3-button"
+		thumb.src = "./noun_stick figure_2670964.png"
+		row.appendChild(thumb)
+		const f_row = document.createElement('h5')
+		f_row.innerText = mockData.names[random_f] + " " + mockData.names[random_l]
+		row.appendChild(f_row)
+		document.getElementById("contact_results").appendChild(row)
+	}
+}
+fillContacts("Computer Science 345", 13)
+fillContacts("Information Systems 322", 7)
+fillContacts("Computer Science 210", 7)
 </script>
 
 <script>
