@@ -339,8 +339,6 @@
 
 <!-- Home page --> 
 <script>
-var openInbox = document.getElementById("myBtn");
-openInbox.click();
 
 function w3_open() {
   document.getElementById("mySidebar").style.display = "block";
@@ -363,11 +361,6 @@ function myFunc(id) {
     x.previousElementSibling.className.replace(" w3-red", "");
   }
 }
-
-document.getElementById("myBtn").addEventListener('click', () => {
-	myFunc('Demo1')
-})
-
 
 function openHome(){
 	var i;
@@ -488,12 +481,6 @@ fillContacts("Computer Science 345", 13)
 fillContacts("Information Systems 322", 7)
 fillContacts("Computer Science 210", 7)
 </script>
-
-<script>
-var openTab = document.getElementById("firstTab");
-openTab.click();
-</script>
-
 </body>
 </html> 
 
